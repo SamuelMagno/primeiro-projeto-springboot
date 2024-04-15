@@ -5,9 +5,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+import javax.swing.text.html.parser.Entity;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -27,6 +32,14 @@ public class PrimeiraController {
     @GetMapping("/metodoQueryParamAll")
     public String metodoQueryParamAll(@RequestParam Map<String, String> allParams) {
         return "Param é " + allParams.entrySet();
+    }
+
+    @PostMapping("metodoComBody")
+    public String metodoComBody(@RequestBody Usuario usuario) {
+        return "Metodo com body: " + usuario.username;
+    }
+    
+    record Usuario(String username) {
     }
     
 }
